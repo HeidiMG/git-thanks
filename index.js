@@ -32,7 +32,6 @@ promises.push(
             }/issues/comments`
         )
         .then(response => {
-            console.log(response.data.length);
             for (const comment of response.data) {
                 // let context =
                 //     comment.body.length > 20
