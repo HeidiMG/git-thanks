@@ -34,23 +34,23 @@ promises.push(
         .then(response => {
             console.log(response.data.length);
             for (const comment of response.data) {
-                let context =
-                    comment.body.length > 20
-                        ? comment.body.slice(0, 20)
-                        : comment.body;
-                console.log(
-                    `${comment.user.login}: ${context}  ****** `,
-                    comment.issue_url,
-                    comment.created_at
-                );
+                // let context =
+                //     comment.body.length > 20
+                //         ? comment.body.slice(0, 20)
+                //         : comment.body;
+                // console.log(
+                //     `${comment.user.login}: ${context}  ****** `,
+                //     comment.issue_url,
+                //     comment.created_at
+                // );
                 let thankee = getThankee(comment.user);
                 thankee.stats.issueComments++;
             }
         })
 );
 
-// Promise.all(promises).then(() => {
-//     for (const thankee of thankeeMap.values()) {
-//         console.log(thankee.user.login, thankee.stats);
-//     }
-// });
+Promise.all(promises).then(() => {
+    for (const thankee of thankeeMap.values()) {
+        console.log(thankee.user.login, thankee.stats);
+    }
+});
